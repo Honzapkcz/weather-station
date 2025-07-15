@@ -64,3 +64,20 @@ td:nth-child(even) {
 	background-color: #222;
 	height: 100%;
 }
+
+
+
+
+
+
+
+
+
+
+.index {
+	background: black url("./img.png") no-repeat center center fixed;
+	background-size: contain;
+}
+.index a {
+	 color:white;
+}

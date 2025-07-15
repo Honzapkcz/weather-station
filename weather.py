@@ -20,4 +20,4 @@ while True:
         print("[terminating]")
         sql.commit()
         sql.close()
-    sleep(30.0)
+    sleep(120.0)

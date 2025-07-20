@@ -1,0 +1,12 @@
+[Unit]
+Description=Weather Station Python Hardware Collection System
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/weather-station
+ExecStart=python3 weather.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

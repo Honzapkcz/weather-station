@@ -16,16 +16,26 @@ $db = new Medoo([
 </head>
 <body>
 <main>
-<?php include "navbar.php"; ?>
+<?php include "navbar.php";
+if (!$_GET["col"]) {
+	$_GET["col"] = "temperature,humidity,water,wind";
+}
+?>
 <div class="content">
+<form method="get">
+<input type="text" name="col" size="40" value="<?php echo $_GET["col"]; ?>"><br>
+</form>
+<?php
+?>
 <img src="./image.png">
 <?php
-	$data = array(
-		new data_set($db, "temperature", "#fff", 100),
-		new data_set($db, "humidity", "#f0f", 100),
-	);
-	
-	create_graph("image.png", 600, 300, $data);
+$colors = array("#0ff", "#ff0", "#0ff", "#00f", "#0f0", "#f00");
+$data = array();
+$columns = explode(",", $_GET["col"]);
+foreach ($columns as $col) {
+	array_push($data, new data_set($db, $col, array_pop($colors), 100));
+}
+create_graph("image.png", 600, 300, $data);
 ?>
 </div>
 </main>
